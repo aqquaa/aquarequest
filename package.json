@@ -1,7 +1,7 @@
 {
   "name": "aquarequest",
-  "version": "1.0.1",
-  "description": "network adaptar with helper states, methods and hooks",
+  "version": "1.0.2",
+  "description": "network adapter with helper states, methods and hooks",
   "main": "dist/aquarequest.cjs.js",
   "module": "dist/aquarequest.esm.js",
   "browser": "dist/aquarequest.umd.js",
