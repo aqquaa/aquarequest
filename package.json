@@ -1,38 +1,39 @@
 {
   "name": "aquarequest",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "network adapter with helper states, methods and hooks",
+  "private": false,
   "type": "module",
-  "main": "dist/aquarequest.cjs.js",
-  "module": "dist/aquarequest.esm.js",
-  "browser": "dist/aquarequest.umd.js",
-  "scripts": {
-    "build": "rollup -c",
-    "pretest": "npm run build"
+  "main": "./dist/aquarequest.umd.cjs",
+  "module": "./dist/aquarequest.js",
+  "exports": {
+    ".": {
+      "import": "./dist/aquarequest.js",
+      "require": "./dist/aquarequest.umd.cjs"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aqquaa/aquarequest"
   },
+  "author": "Sourav Rakshit <hello@itsrav.dev> (https://twitter.com/srvrksh)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0",
+    "axios": "^1.2",
+    "deepmerge": "^4.3",
+    "lodash.merge": "^4.6.2",
+    "qs": "^6.11"
+  },
   "keywords": [
     "network",
     "xhr"
   ],
-  "author": "Sourav Rakshit <hello@itsrav.dev> (https://twitter.com/srvrksh)",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-json": "^6.0",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "axios": "^1.2",
-    "deepmerge": "^4.3",
-    "lodash.merge": "^4.6.2",
-    "qs": "^6.11",
-    "rollup": "^3.20.2"
-  },
   "files": [
     "dist",
     "src"
