@@ -1,7 +1,8 @@
 {
   "name": "aquarequest",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "network adapter with helper states, methods and hooks",
+  "type": "module",
   "main": "dist/aquarequest.cjs.js",
   "module": "dist/aquarequest.esm.js",
   "browser": "dist/aquarequest.umd.js",
@@ -20,17 +21,17 @@
   "author": "Sourav Rakshit <hello@itsrav.dev> (https://twitter.com/srvrksh)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@rollup/plugin-json": "^4.1.0",
-    "axios": "^0.27.2",
-    "deepmerge": "^4.2.2",
-    "lodash": "^4.17.21",
-    "qs": "^6.10.3",
-    "rollup": "^2.75.6",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "axios": "^1.2",
+    "deepmerge": "^4.3",
+    "lodash.merge": "^4.6.2",
+    "qs": "^6.11",
+    "rollup": "^3.20.2"
   },
   "files": [
     "dist",

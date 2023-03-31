@@ -1,19 +1,16 @@
-import merge from 'lodash/fp/merge';
+import merge from 'lodash.merge';
 import axios from 'axios';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
-
   if (Object.getOwnPropertySymbols) {
     var symbols = Object.getOwnPropertySymbols(object);
     enumerableOnly && (symbols = symbols.filter(function (sym) {
       return Object.getOwnPropertyDescriptor(object, sym).enumerable;
     })), keys.push.apply(keys, symbols);
   }
-
   return keys;
 }
-
 function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = null != arguments[i] ? arguments[i] : {};
@@ -23,10 +20,8 @@ function _objectSpread2(target) {
       Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
     });
   }
-
   return target;
 }
-
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -36,23 +31,20 @@ function _typeof(obj) {
     return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   }, _typeof(obj);
 }
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
     descriptor.enumerable = descriptor.enumerable || false;
     descriptor.configurable = true;
     if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
+    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
   }
 }
-
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
@@ -61,8 +53,8 @@ function _createClass(Constructor, protoProps, staticProps) {
   });
   return Constructor;
 }
-
 function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -73,22 +65,17 @@ function _defineProperty(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
-
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
-
 function _iterableToArray(iter) {
   if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
-
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
   if (typeof o === "string") return _arrayLikeToArray(o, minLen);
@@ -97,17 +84,27 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
-
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
-
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
   return arr2;
 }
-
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 function _hasProperty(obj, prop) {
@@ -128,20 +125,16 @@ function _objectToFormData(source) {
   var form = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new FormData();
   var parentKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   source = source || {};
-
   for (var key in source) {
     if (Object.prototype.hasOwnProperty.call(source, key)) {
       append(form, composeKey(parentKey, key), source[key]);
     }
   }
-
   return form;
 }
-
 function composeKey(parent, key) {
   return parent ? parent + '[' + key + ']' : key;
 }
-
 function append(form, key, value) {
   if (Array.isArray(value)) {
     return Array.from(value.keys()).forEach(function (index) {
@@ -162,7 +155,6 @@ function append(form, key, value) {
   } else if (value === null || value === undefined) {
     return form.append(key, '');
   }
-
   _objectToFormData(value, form, key);
 }
 function dispatch(name) {
@@ -216,13 +208,12 @@ var PUBLIC_EVENTS = Object.freeze({
 var State = /*#__PURE__*/function (_HOOK_NAME$BEFORE, _HOOK_NAME$START, _HOOK_NAME$STATUS_COD, _HOOK_NAME$SUCCESS, _HOOK_NAME$CANCEL, _HOOK_NAME$UPLOAD, _HOOK_NAME$DOWNLOAD, _HOOK_NAME$ERROR, _HOOK_NAME$FINISH) {
   function State() {
     _classCallCheck(this, State);
-
     this.state = Object.assign({}, STATE);
   }
-
   _createClass(State, [{
     key: _HOOK_NAME$BEFORE,
-    value: function value() {// EVERYTHING NEEDED TO BE DONE HERE ALREADY DONE IN MAIN CONTEXT
+    value: function value() {
+      // EVERYTHING NEEDED TO BE DONE HERE ALREADY DONE IN MAIN CONTEXT
       // LEAVE IT
     }
   }, {
@@ -275,18 +266,15 @@ var State = /*#__PURE__*/function (_HOOK_NAME$BEFORE, _HOOK_NAME$START, _HOOK_NA
       this.state.busy = false;
     }
   }]);
-
   return State;
 }(HOOK_NAME.BEFORE, HOOK_NAME.START, HOOK_NAME.STATUS_CODE, HOOK_NAME.SUCCESS, HOOK_NAME.CANCEL, HOOK_NAME.UPLOAD, HOOK_NAME.DOWNLOAD, HOOK_NAME.ERROR, HOOK_NAME.FINISH);
 
 var Hook = /*#__PURE__*/function (_HOOK_NAME$BEFORE, _HOOK_NAME$START, _HOOK_NAME$STATUS_COD, _HOOK_NAME$SUCCESS, _HOOK_NAME$CANCEL, _HOOK_NAME$UPLOAD, _HOOK_NAME$DOWNLOAD, _HOOK_NAME$ERROR, _HOOK_NAME$FINISH) {
   function Hook(mainContext) {
     _classCallCheck(this, Hook);
-
     this.mainContext = mainContext;
     this.stateHub = new State();
   }
-
   _createClass(Hook, [{
     key: _HOOK_NAME$BEFORE,
     value: function value(options) {
@@ -342,18 +330,15 @@ var Hook = /*#__PURE__*/function (_HOOK_NAME$BEFORE, _HOOK_NAME$START, _HOOK_NAM
       this.stateHub[HOOK_NAME.FINISH].call(this.mainContext);
     }
   }]);
-
   return Hook;
 }(HOOK_NAME.BEFORE, HOOK_NAME.START, HOOK_NAME.STATUS_CODE, HOOK_NAME.SUCCESS, HOOK_NAME.CANCEL, HOOK_NAME.UPLOAD, HOOK_NAME.DOWNLOAD, HOOK_NAME.ERROR, HOOK_NAME.FINISH);
 
 var HookHub = /*#__PURE__*/function () {
   function HookHub(mainContext) {
     _classCallCheck(this, HookHub);
-
     this.hook = new Hook(mainContext);
     this.handlers = {};
   }
-
   _createClass(HookHub, [{
     key: "registerInternalHooks",
     value: function registerInternalHooks() {
@@ -375,9 +360,7 @@ var HookHub = /*#__PURE__*/function () {
       var self = this;
       hooksList.forEach(function (hooks) {
         Object.values(HOOK_NAME).forEach(function (NAME) {
-          if (!_hasProperty(hooks, NAME)) hooks[NAME] = function () {
-            /*NOTHING*/
-          };
+          if (!_hasProperty(hooks, NAME)) hooks[NAME] = function () {/*NOTHING*/};
         });
         self.register(H.BEFORE, hooks[H.BEFORE]);
         self.register(H.START, hooks[H.START]);
@@ -394,21 +377,17 @@ var HookHub = /*#__PURE__*/function () {
     key: "register",
     value: function register(event, handler) {
       if (!this.handlers) this.handlers = {};
-
       if (!this.handlers[event]) {
         this.handlers[event] = [];
       }
-
       this.handlers[event].push(handler);
     }
   }, {
     key: "off",
     value: function off(event, handler) {
       var _this$handlers;
-
       var handlers = (_this$handlers = this.handlers) === null || _this$handlers === void 0 ? void 0 : _this$handlers[event];
       if (!handlers) return;
-
       for (var i = 0; i < handlers.length; i++) {
         if (handlers[i] === handler) {
           handlers.splice(i--, 1); // remember js works as reference so this will mutate this.handlers
@@ -419,23 +398,20 @@ var HookHub = /*#__PURE__*/function () {
     key: "run",
     value: function run(event) {
       var _this$handlers2,
-          _this = this;
-
+        _this = this;
       for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
         args[_key - 1] = arguments[_key];
       }
-
       if (!((_this$handlers2 = this.handlers) !== null && _this$handlers2 !== void 0 && _this$handlers2[event])) {
         return; // no handlers for that event name
-      } // call the handlers
+      }
 
-
+      // call the handlers
       this.handlers[event].forEach(function (handler) {
         return handler.apply(_this, args);
       });
     }
   }]);
-
   return HookHub;
 }();
 
@@ -449,13 +425,11 @@ function NetworkRequest (HookHub, options) {
       HookHub.run(HOOK_NAME.CANCEL, error.message);
       return;
     }
-
     if (error.response) {
       HookHub.run(HOOK_NAME.STATUS_CODE, error.response.status);
       HookHub.run(HOOK_NAME.ERROR, error.response);
       return;
     }
-
     HookHub.run(HOOK_NAME.ERROR, error);
   }).then(function (_) {
     return HookHub.run(HOOK_NAME.FINISH, {});
@@ -466,14 +440,12 @@ function _injectCancelSignal(options) {
   var cancelToken = _hasProperty(options, 'cancelToken') ? options.cancelToken : null;
   var signal = !cancelToken && _hasProperty(options, 'signal') ? options.signal : null;
   var abortControllerInstance = null;
-
   if (!cancelToken && !signal) {
     abortControllerInstance = new AbortController();
     options = Object.assign({}, options, {
       signal: abortControllerInstance.signal
     });
   }
-
   return {
     options: options,
     abortControllerInstance: abortControllerInstance
@@ -486,7 +458,6 @@ function _composeConfig(HookHub, url) {
   var processed = processPayload(url, method, payload);
   var cancelToken = _hasProperty(userOptions, 'cancelToken') ? userOptions.cancelToken : null;
   var signal = !cancelToken && _hasProperty(userOptions, 'signal') ? userOptions.signal : new AbortController().signal;
-
   var defaultOptions = _objectSpread2(_objectSpread2({
     method: method,
     url: processed.url,
@@ -510,21 +481,17 @@ function _composeConfig(HookHub, url) {
       HookHub.run(HOOK_NAME.DOWNLOAD, progress);
     }
   });
-
   return merge(defaultOptions, userOptions);
 }
-
 function processPayload(url, method, payload, forceFormData) {
   if ((_hasFiles(payload) || forceFormData) && !(payload instanceof FormData)) {
     payload = _objectToFormData(payload);
   }
-
   if (!(payload instanceof FormData) && method === Method.GET && Object.keys(payload).length) {
     url = url.endsWith("/") ? url.slice(0, -1) : url;
     var params = new URLSearchParams(_objectSpread2({}, payload));
     url += "?" + params.toString();
   }
-
   return {
     url: url,
     payload: payload
@@ -537,9 +504,7 @@ var AquaRequest = /*#__PURE__*/function () {
     var userStates = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     var hooks = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-
     _classCallCheck(this, AquaRequest);
-
     this.requestURL = requestURL;
     this.state = {};
     this._userStates = userStates; // [ [name, callback], ... ]
@@ -548,22 +513,21 @@ var AquaRequest = /*#__PURE__*/function () {
     this.hooks = _isObjEmpty(hooks) ? [] : [hooks];
     this._cancelToken = null;
     this.availableHooks = Array.from(Object.values(HOOK_NAME));
-    this.availableEvents = Array.from(Object.values(PUBLIC_EVENTS)); // initial states assign & register user provided states
+    this.availableEvents = Array.from(Object.values(PUBLIC_EVENTS));
 
+    // initial states assign & register user provided states
     this.resetStates(); // this is useful because the user may be expecting the state to be available before the request begins
-  } // expect userStates = [ [name, callback], ... ]
+  }
 
-
+  // expect userStates = [ [name, callback], ... ]
   _createClass(AquaRequest, [{
     key: "_registerUserStates",
     value: function _registerUserStates() {
       if (this._userStates.length === 0) return;
       var mainContext = this;
-
       var validOnly = function validOnly(i) {
         return Array.isArray(i) || typeof i[0] !== 'undefined' || typeof i[1] === "function";
       };
-
       Array.from(this._userStates).filter(validOnly).forEach(function (i) {
         var stateName = i[0];
         var stateEvaluator = i[1];
@@ -594,8 +558,8 @@ var AquaRequest = /*#__PURE__*/function () {
       var userOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.requestConfig = Object.assign({}, merge(this.requestConfig, userOptions));
       return this;
-    } // always overwrite all hooks callbacks
-
+    }
+    // always overwrite all hooks callbacks
   }, {
     key: "setRequestHooks",
     value: function setRequestHooks() {
@@ -617,30 +581,30 @@ var AquaRequest = /*#__PURE__*/function () {
       var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
       var _config$options = config.options,
-          options = _config$options === void 0 ? {} : _config$options,
-          _config$hooks = config.hooks,
-          hooks = _config$hooks === void 0 ? {} : _config$hooks;
+        options = _config$options === void 0 ? {} : _config$options,
+        _config$hooks = config.hooks,
+        hooks = _config$hooks === void 0 ? {} : _config$hooks;
+
       /**PRE-HOOK SETUP STAGE */
+      this.resetStates();
 
-      this.resetStates(); // cancel token inject if not provided
-
+      // cancel token inject if not provided
       var injected = _injectCancelSignal(options);
+      this._cancelToken = injected.abortControllerInstance;
 
-      this._cancelToken = injected.abortControllerInstance; // last moment config & hooks
-
+      // last moment config & hooks
       var finalRqstConfig = Object.assign({}, merge(this.requestConfig, injected.options));
       var finalHooks = _isObjEmpty(hooks) ? _toConsumableArray(this.hooks) : [].concat(_toConsumableArray(this.hooks), [hooks]);
       var HookHub$1 = new HookHub(this);
-
       var composedConfig = _composeConfig(HookHub$1, this.requestURL, method, payload, finalRqstConfig); // compose the final config
-
 
       HookHub$1.registerInternalHooks();
       HookHub$1.registerUserHooks(finalHooks);
+
       /**REALM OF HOOKS BEGIN */
+      HookHub$1.run(HOOK_NAME.BEFORE, composedConfig);
 
-      HookHub$1.run(HOOK_NAME.BEFORE, composedConfig); // XHR BEGIN
-
+      // XHR BEGIN
       NetworkRequest(HookHub$1, composedConfig);
     }
   }, {
@@ -668,7 +632,6 @@ var AquaRequest = /*#__PURE__*/function () {
     value: function cancel() {
       if (this.state.busy && this._cancelToken) {
         this._cancelToken.abort();
-
         this._cancelToken = null;
       }
     }
@@ -676,11 +639,9 @@ var AquaRequest = /*#__PURE__*/function () {
     key: "resetStates",
     value: function resetStates() {
       this.state = Object.assign({}, STATE);
-
       this._registerUserStates();
     }
   }]);
-
   return AquaRequest;
 }();
 

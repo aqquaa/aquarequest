@@ -1,5 +1,5 @@
 import HookHubService from './HookHub'
-import merge from 'lodash/fp/merge';
+import merge from 'lodash.merge';
 import { Method, HOOK_NAME, PUBLIC_EVENTS, STATE } from './Fixed';
 import { _hasFiles, _objectToFormData, _isObjEmpty, _hasProperty } from './helper/util';
 import NetworkRequest from "./Network";

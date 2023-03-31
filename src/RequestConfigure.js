@@ -1,6 +1,6 @@
 import { _hasProperty, _hasFiles, _objectToFormData } from './helper/util';
 import { Method, HOOK_NAME } from './Fixed';
-import merge from 'lodash/fp/merge';
+import merge from 'lodash.merge';
 
 export function _injectCancelSignal(options) {
     const cancelToken = _hasProperty(options, 'cancelToken') ? options.cancelToken : null;
