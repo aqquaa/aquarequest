@@ -1,6 +1,6 @@
 {
   "name": "aquarequest",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "network adapter with helper states, methods and hooks",
   "type": "module",
   "main": "dist/aquarequest.cjs.js",
