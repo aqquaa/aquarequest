@@ -4,12 +4,12 @@
   "description": "network adapter with helper states, methods and hooks",
   "private": false,
   "type": "module",
-  "main": "./dist/aquarequest.umd.cjs",
-  "module": "./dist/aquarequest.js",
+  "main": "./dist/aqua-request.umd.cjs",
+  "module": "./dist/aqua-request.js",
   "exports": {
     ".": {
-      "import": "./dist/aquarequest.js",
-      "require": "./dist/aquarequest.umd.cjs"
+      "import": "./dist/aqua-request.js",
+      "require": "./dist/aqua-request.umd.cjs"
     }
   },
   "repository": {
