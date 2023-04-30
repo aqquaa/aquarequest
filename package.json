@@ -1,6 +1,6 @@
 {
   "name": "aquarequest",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "network adapter with helper states, methods and hooks",
   "private": false,
   "type": "module",
@@ -24,11 +24,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^4.2.0",
     "axios": "^1.2",
     "deepmerge": "^4.3",
     "lodash.merge": "^4.6.2",
-    "qs": "^6.11"
+    "qs": "^6.11",
+    "vite": "^4.2.0",
+    "vite-plugin-banner": "^0.7.0"
   },
   "keywords": [
     "network",
