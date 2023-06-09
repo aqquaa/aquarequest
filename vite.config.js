@@ -1,11 +1,14 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vitePluginBanner from 'vite-plugin-banner';
+import pkg from './package.json'
+
+const packageName = pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1)
 
 export function createBanner() {
     return `/**
-   * AquaRequest
-   * version: v1.0.8
+   * ${packageName}
+   * version: ${pkg.version}
    * 
    * Copyright (c) itsrav.dev
    *
